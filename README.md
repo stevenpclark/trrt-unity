@@ -4,7 +4,7 @@ Unity3D-based implementation of the TRRT path-planning algorithm
 ![Unity Screenshot](/images/image10.png)
 
 ## Objectives
-- Implement the path-planning algorithm described in the whitepaper ["Transition-based RRT for Path Planning in Continuous Cost Spaces"](http://www.leonardjaillet.com/Publications_files/Iros08_Jaillet_TransitRRT.pdf) (Jaillet, Cortés, and Siméon, 2008)
+- Implement the random-trees path-planning algorithm described in the whitepaper ["Transition-based RRT for Path Planning in Continuous Cost Spaces"](http://www.leonardjaillet.com/Publications_files/Iros08_Jaillet_TransitRRT.pdf) (Jaillet, Cortés, and Siméon, 2008)
 - Learn how to use the [Unity3D](https://unity3d.com/) engine
 
 ### Details
