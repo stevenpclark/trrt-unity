@@ -13,9 +13,20 @@
 *.userprefs
 *.pidb
 *.booproj
+ExportedObj/
+obj/
+*.svd
 
 # Unity3D generated meta files
 *.pidb.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
