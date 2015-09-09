@@ -19,5 +19,15 @@ public class RotateScript : MonoBehaviour {
 		if(Input.GetKey("right")) {
 			transform.RotateAround(Vector3.zero, Vector3.up, -rotationSpeed * Time.deltaTime);
 		}
+
+		if(Input.GetKey("up") && transform.localRotation.eulerAngles.z < 90.0) {
+			Vector3 rightAxis = transform.TransformDirection(Vector3.right);
+			transform.RotateAround(Vector3.zero, rightAxis, rotationSpeed * Time.deltaTime);
+		}
+
+		if(Input.GetKey("down") && transform.position.y > 0.0) {
+			Vector3 rightAxis = transform.TransformDirection(Vector3.right);
+			transform.RotateAround(Vector3.zero, rightAxis, -rotationSpeed * Time.deltaTime);
+		}
 	}
 }
