@@ -12,6 +12,7 @@ public class TerrainScript : MonoBehaviour {
 		public Vector3 parentPos;
 		public int parentInd;
 		public GameObject line = null;
+		public float heightOffset = 0.1f; //lift up a little to prevent clipping
 		
 		public Node(Vector3 _pos, Vector3 _parentPos, int _parentInd, GameObject obj) {
 			pos = _pos;
@@ -23,8 +24,8 @@ public class TerrainScript : MonoBehaviour {
 			if(parentInd >= 0) {
 				line = (GameObject) Instantiate(linePrefab);
 				LineRenderer lr = line.GetComponent<LineRenderer>();
-				lr.SetPosition(0,pos + new Vector3(0f,10f,0f)); //lift up a little to prevent clipping
-				lr.SetPosition(1,parentPos + new Vector3(0f,10f,0f)); //lift up a little to prevent clipping
+				lr.SetPosition(0,pos + new Vector3(0f,heightOffset,0f));
+				lr.SetPosition(1,parentPos + new Vector3(0f,heightOffset,0f));
 			}
 		}
 		
@@ -32,8 +33,8 @@ public class TerrainScript : MonoBehaviour {
 			GameObject.Destroy(line);
 			line = (GameObject) Instantiate(pathPrefab);
 			LineRenderer lr = line.GetComponent<LineRenderer>();
-			lr.SetPosition(0,pos + new Vector3(0f,10f,0f)); //lift up a little to prevent clipping
-			lr.SetPosition(1,parentPos + new Vector3(0f,10f,0f)); //lift up a little to prevent clipping
+			lr.SetPosition(0,pos + new Vector3(0f,heightOffset,0f));
+			lr.SetPosition(1,parentPos + new Vector3(0f,heightOffset,0f));
 		}
 	};
 	
@@ -94,10 +95,6 @@ public class TerrainScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown("s")) {
-			BeginSolving(1);
-		}
-		
-		if(Input.GetKeyDown("f")) {
 			BeginSolving(10);
 		}
 		
@@ -111,7 +108,7 @@ public class TerrainScript : MonoBehaviour {
 		
 		if(solving) {
 			if(nodes.Count < MAX_NUM_NODES) {
-				statusText.text = "Solving... (nodes="+nodes.Count+", temp=" + temperature + ")";
+				statusText.text = "Solving... (nodes="+nodes.Count+", temp=" + temperature.ToString("0.00E00") + ")";
 				TRRTGrow();
 			}
 		}
@@ -125,11 +122,11 @@ public class TerrainScript : MonoBehaviour {
 			//Debug.Log(hitInfo.point);
 			coordText.text = hitInfo.point.ToString();
 			
-			if(Input.GetKey("i")) {
+			if(Input.GetKey("1")) {
 				start.transform.position = hitInfo.point;
 			}
 			
-			if(Input.GetKey("g")) {
+			if(Input.GetKey("2")) {
 				goal.transform.position = hitInfo.point;
 			}
 		}
